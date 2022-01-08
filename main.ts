@@ -93,9 +93,9 @@ namespace grovevoicerecognizer {
     
     export function  getResultFromSerial() : VoiceType
     {
-        let result: VoiceType;
 /*
         readBuffer doesn't work with calliope runtime, only with microbit:
+        let result: VoiceType;
         let recv_data: Buffer = null;
         recv_data = serial.readBuffer(1);
         if (recv_data.length > 0) {
