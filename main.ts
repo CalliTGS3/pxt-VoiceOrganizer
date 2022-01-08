@@ -108,6 +108,7 @@ namespace grovevoicerecognizer {
             if (str.length > 0) {
                 result = str.charCodeAt(0);
             }
+            return result;
     }
 
     /**
