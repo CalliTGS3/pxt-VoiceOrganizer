@@ -1,12 +1,16 @@
 /*
  * main.ts
  * Driver for voice recognizer.
+ *
+ * Forked by:
  *  
  * Copyright (c) 2018 Seeed Technology Co., Ltd.
  * Website    : www.seeed.cc
  * Author     : downey
  * Create Time: sep. 2018
  * Change Log :
+ * 
+ * getResultFromSerial changed for calliope (readBuffer exchanged with readString)
  *
  * The MIT License (MIT)
  *
@@ -90,9 +94,20 @@ namespace grovevoicerecognizer {
     export function  getResultFromSerial() : VoiceType
     {
         let result: VoiceType;
+/*
+        readBuffer doesn't work with calliope runtime, only with microbit:
         let recv_data: Buffer = null;
         recv_data = serial.readBuffer(1);
-        return recv_data[0];
+        if (recv_data.length > 0) {
+            result = recv_data[0];
+        }
+*/
+            let result: number = 0;
+            let str: string = "";
+            str = serial.readString();
+            if (str.length > 0) {
+                result = str.charCodeAt(0);
+            }
     }
 
     /**
